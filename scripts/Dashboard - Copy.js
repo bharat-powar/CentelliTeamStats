@@ -1,4 +1,4 @@
-import { app } from "/scripts/Index.js";
+import { app } from "CentelliTeamStats/scripts/Index.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
 
