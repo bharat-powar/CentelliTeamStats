@@ -52,7 +52,7 @@ let arrstrClients = [];
 // Check authentication state
 auth.onAuthStateChanged((user) => {
     if (!user) {
-        window.location.href = "/Index.html";
+        window.location.href = "/CentelliTeamStats/";
     } else {
         console.log("User is logged in");
         UsersEmail = user.email.split("@")[0]; // Use part before "@" as identifier
