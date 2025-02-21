@@ -1,0 +1,8 @@
+
+
+*After assigning we need to first check if that VM is already been taken or not. As of now the database is being overwritten.
+
+
+
+
+*Maybe add what are the people doing in VM
