@@ -19,7 +19,7 @@ const auth = getAuth(app);
 console.log(window.location.pathname)
 
 // Ensure script runs only on login page
-if ( window.location.pathname.includes("/CentelliTeamStats/") && !window.location.pathname.includes("/Dashboard/") ) {
+if ( window.location.pathname.includes("/CentelliTeamStats/") && !window.location.pathname.includes("/Dashboard.html") ) {
   const loginButton = document.getElementById("loginButton");
   const errorMessage = document.createElement("p");
   errorMessage.style.color = "red";
