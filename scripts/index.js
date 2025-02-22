@@ -3,6 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebas
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
 // Your web app's Firebase configuration
+/*
 const firebaseConfig = {
   apiKey: "{{API_KEY}}",
   authDomain: "{{AUTH_DOMAIN}}",
@@ -12,7 +13,7 @@ const firebaseConfig = {
   messagingSenderId: "{{MESSAGE_SENDER_ID}}",
   appId: "{{APP_ID}}",
 };
-
+*/
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
