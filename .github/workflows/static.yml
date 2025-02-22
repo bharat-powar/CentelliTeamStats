@@ -36,13 +36,13 @@ jobs:
         # Replace placeholders in index.js with actual Firebase config values from GitHub Secrets
       - name: Inject Firebase Config
         run: |
-          sed -i "s/{{API_KEY}}/${{ secrets.API_KEY }}/g" ./index.js
-          sed -i "s/{{AUTH_DOMAIN}}/${{ secrets.AUTH_DOMAIN }}/g" ./index.js
-          sed -i "s/{{DATABASE_URL}}/${{ secrets.DATABASE_URL }}/g" ./index.js
-          sed -i "s/{{PROJECT_ID}}/${{ secrets.PROJECT_ID }}/g" ./index.js
-          sed -i "s/{{STORAGE_BUCKET}}/${{ secrets.STORAGE_BUCKET }}/g" ./index.js
-          sed -i "s/{{MESSAGE_SENDER_ID}}/${{ secrets.MESSAGE_SENDER_ID }}/g" ./index.js
-          sed -i "s/{{APP_ID}}/${{ secrets.APP_ID }}/g" ./index.js
+          sed -i "s/{{API_KEY}}/${{ secrets.API_KEY }}/g" ./scripts/index.js
+          sed -i "s/{{AUTH_DOMAIN}}/${{ secrets.AUTH_DOMAIN }}/g" ./scripts/index.js
+          sed -i "s/{{DATABASE_URL}}/${{ secrets.DATABASE_URL }}/g" ./scripts/index.js
+          sed -i "s/{{PROJECT_ID}}/${{ secrets.PROJECT_ID }}/g" ./scripts/index.js
+          sed -i "s/{{STORAGE_BUCKET}}/${{ secrets.STORAGE_BUCKET }}/g" ./scripts/index.js
+          sed -i "s/{{MESSAGE_SENDER_ID}}/${{ secrets.MESSAGE_SENDER_ID }}/g" ./scripts/index.js
+          sed -i "s/{{APP_ID}}/${{ secrets.APP_ID }}/g" ./scripts/index.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
