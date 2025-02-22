@@ -4,13 +4,13 @@ import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/fir
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAdRCY-3vQ48gFPP_dcbEJCfkslkhYZfes",
-  authDomain: "centelli-team-stats.firebaseapp.com",
-  databaseURL: "https://centelli-team-stats-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "centelli-team-stats",
-  storageBucket: "centelli-team-stats.firebasestorage.app",
-  messagingSenderId: "233068119475",
-  appId: "1:233068119475:web:51d40ce2e9bd110c6177c6",
+  apiKey: "{{API_KEY}}",
+  authDomain: "{{AUTH_DOMAIN}}",
+  databaseURL: "{{DATABASE_URL}}",
+  projectId: "{{PROJECT_ID}}",
+  storageBucket: "{{STORAGE_BUCKET}}",
+  messagingSenderId: "{{MESSAGE_SENDER_ID}}",
+  appId: "{{APP_ID}}",
 };
 
 // Initialize Firebase
