@@ -2,6 +2,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "{{API_KEY}}",
+  authDomain: "{{AUTH_DOMAIN}}",
+  databaseURL: "{{DATABASE_URL}}",
+  projectId: "{{PROJECT_ID}}",
+  storageBucket: "{{STORAGE_BUCKET}}",
+  messagingSenderId: "{{MESSAGE_SENDER_ID}}",
+  appId: "{{APP_ID}}",
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
