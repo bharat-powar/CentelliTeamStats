@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centelli Team Stats - Login</title>
+  <!-- Google Fonts for a modern look -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    /* Global styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+    /* Centered login container */
+    .login-container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    /* Titles matching dashboard colors */
+    .login-container h1 {
+      text-align: center;
+      color: #274462;
+      margin: 0 0 10px;
+      font-size: 2em;
+    }
+    .login-container h2 {
+      text-align: center;
+      color: #d85803;
+      margin: 0 0 30px;
+      font-size: 1.5em;
+    }
+    /* Form styling */
+    fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+    legend {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 500;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    /* Disabled button style to match dashboard */
+    button:disabled {
+      opacity: 0.6;
+      background-color: #bdc3c7 !important;
+      color: #7f8c8d !important;
+      cursor: not-allowed;
+    }
+  </style>
+  <script src="scripts/index.js" type="module"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Centelli</h1>
+    <h2>Team Stats</h2>
+    <form id="loginform">
+      <fieldset>
+        <legend>Login</legend>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+        <button id="loginButton" type="button">Login</button>
+      </fieldset>
+    </form>
+  </div>
+</body>
+</html>
