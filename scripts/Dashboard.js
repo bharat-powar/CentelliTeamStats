@@ -1,36 +1,18 @@
 import { firebaseAppPromise } from "./index.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+
 // Adjustable disable duration (in milliseconds)
 const BUTTON_DISABLE_TIME = 2000;
 
-
 firebaseAppPromise.then(app => {
-    
-// Helper function: disable one button temporarily
-function disableButtonTemporarily(button, duration = BUTTON_DISABLE_TIME) {
-    button.disabled = true;
-    setTimeout(() => {
-        button.disabled = false;
-    }, duration);
-}
 
-// Helper function: disable all buttons in a container
-function disableButtonsInContainer(container, duration = BUTTON_DISABLE_TIME) {
-    const buttons = container.querySelectorAll("button");
+// Helper function: Disable all buttons except Sign Out temporarily
+function disableAllButtonsExceptSignOut(duration = BUTTON_DISABLE_TIME) {
+    const buttons = document.querySelectorAll("button:not(#btSignout)"); // Exclude Sign Out button
     buttons.forEach((button) => (button.disabled = true));
     setTimeout(() => {
         buttons.forEach((button) => (button.disabled = false));
-    }, duration);
-}
-
-// New helper function: disable both refresh buttons as a group
-function disableRefreshButtons(duration = BUTTON_DISABLE_TIME) {
-    RefreshVMs.disabled = true;
-    RefreshActiveSessions.disabled = true;
-    setTimeout(() => {
-        RefreshVMs.disabled = false;
-        RefreshActiveSessions.disabled = false;
     }, duration);
 }
 
@@ -165,23 +147,23 @@ function loadActiveSessions() {
         .catch((error) => console.error("Error loading active sessions:", error));
 }
 
-// Event listener: Client selection (disable entire Client column)
+// Event listener: Client selection (disable all buttons except Sign Out)
 ShowResults.addEventListener("click", (event) => {
     if (event.target.tagName !== "BUTTON") return;
-    disableButtonsInContainer(ShowResults);
+    disableAllButtonsExceptSignOut();
     selectedClient = event.target.id;
     console.log("Selected client:", selectedClient);
     loadVMs(selectedClient);
     loadActiveSessions();
 });
 
-// Event listener: Assign VM button in the VM column (disable entire VM column)
+// Event listener: Assign VM button (disable all buttons except Sign Out)
 ShowVMResults.addEventListener("click", (event) => {
     if (event.target.tagName !== "BUTTON") return;
-    disableButtonsInContainer(ShowVMResults);
+    disableAllButtonsExceptSignOut();
     const vmName = event.target.id;
     const vmRef = ref(database, `Clients/${selectedClient}/${vmName}`);
-    // Check if the VM is already assigned
+
     get(vmRef)
         .then((snapshot) => {
             if (snapshot.exists() && snapshot.val()) {
@@ -189,7 +171,6 @@ ShowVMResults.addEventListener("click", (event) => {
                 alert("This VM is already assigned");
                 return;
             }
-            // If VM is free, assign it to the current user
             set(vmRef, UsersEmail)
                 .then(() => {
                     console.log("VM assigned successfully");
@@ -201,10 +182,10 @@ ShowVMResults.addEventListener("click", (event) => {
         .catch((error) => console.error("Error reading VM data:", error));
 });
 
-// Event listener: Unassign VM button in Active Sessions column (disable entire Active Sessions column)
+// Event listener: Unassign VM button (disable all buttons except Sign Out)
 ShowActiveSessions.addEventListener("click", (event) => {
     if (event.target.tagName !== "BUTTON") return;
-    disableButtonsInContainer(ShowActiveSessions);
+    disableAllButtonsExceptSignOut();
     const parts = event.target.id.split('/');
     if (parts.length !== 2) return;
     const [client, vmName] = parts;
@@ -220,9 +201,9 @@ ShowActiveSessions.addEventListener("click", (event) => {
         .catch((error) => console.error("Error unassigning VM:", error));
 });
 
-// Event listener: Refresh VMs button
+// Event listener: Refresh VMs button (disable all buttons except Sign Out)
 RefreshVMs.addEventListener("click", () => {
-    disableRefreshButtons();
+    disableAllButtonsExceptSignOut();
     if (selectedClient) {
         loadVMs(selectedClient);
     } else {
@@ -230,15 +211,14 @@ RefreshVMs.addEventListener("click", () => {
     }
 });
 
-// Event listener: Refresh Active Sessions button
+// Event listener: Refresh Active Sessions button (disable all buttons except Sign Out)
 RefreshActiveSessions.addEventListener("click", () => {
-    disableRefreshButtons();
+    disableAllButtonsExceptSignOut();
     loadActiveSessions();
 });
 
-// Event listener: Sign out button
+// Event listener: Sign out button (Sign Out button remains enabled)
 SignOut.addEventListener("click", () => {
-    disableButtonTemporarily(SignOut);
     signOut(auth)
         .then(() => alert("Signing out"))
         .catch((error) => console.error("Error signing out:", error));
@@ -247,9 +227,6 @@ SignOut.addEventListener("click", () => {
 // Initial load
 loadClients();
 
-    // You can now use the Firebase app instance here
-  }).catch(error => {
-
+}).catch(error => {
     console.error("Firebase initialization failed:", error);
-  });
-
+});
